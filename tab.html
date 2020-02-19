@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>选项卡</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    #container {
+      margin: 100px auto;
+      width: 400px;
+      height: 300px;
+      border: 1px solid #000;
+    }
+
+    #container #nav {
+      height: 30px;
+      list-style: none;
+      border-bottom: 1px solid;
+    }
+
+    #nav li {
+      float: left;/* 浮动元素脱离文档流 */
+      width: 120px;
+      height: 30px;
+      margin-right: 5px;
+      text-align: center;
+      line-height: 30px;
+      background-color: #ccc;
+      cursor: pointer;
+    }
+
+    #nav .nav-selected {
+      background-color: #000;
+      color: #fff;
+    }
+
+    #content div{
+      display: none;
+    }
+
+    #content .content-selected {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    1.完成一个初始样式html+css
+    2.找到上面的选项，绑定相应的事件
+    3.点击按钮的时候切换：
+      （1）按钮的样式
+      （2）对应的内容也要切换
+   -->
+  <div id="container">
+    <ul id="nav">
+      <li class="nav-selected">html</li>
+      <li>css</li>
+      <li>javascript</li>
+    </ul>
+    <div id="content">
+      <div class="content-selected">学习html</div>
+      <div>学习css</div>
+      <div>学习javascript</div>
+    </div>  
+  </div>
+
+  <script>
+    
+    //找到三个按钮
+    var oNav = document.getElementById('nav');
+
+    //HTMLCollection 类数组
+    var aLis = document.getElementsByTagName('li');
+
+    var oContent = document.getElementById('content');
+    var aDivs = oContent.getElementsByTagName('div');
+
+    //循环遍历li的集合，给每个li元素分别绑定事件
+    for(var i = 0; i < aLis.length; i++) {
+      aLis[i].index = i; //!!!给每个li对象自定义(index)属性，保存着循环时候i对应的值
+      aLis[i].onclick = function () {
+        //去掉所有li的样式
+        for(var i = 0; i < aLis.length; i++) {
+          aLis[i].className = '';
+          aDivs[i].className = '';
+        }
+
+        // console.log(this);
+        // console.log(this.index);
+        this.className = 'nav-selected';//当前选中的li设置class属性
+        //当前li对应的div.className = 'content-selected'
+        aDivs[this.index].className = 'content-selected';
+      }
+    }
+  
+  </script>
+</body>
+
+</html>

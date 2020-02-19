@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>放大镜</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    img {
+      width: 400px;
+      height: 400px;
+    }
+
+    #small, #big {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      float: left;
+    }
+
+    #big {
+      display: none;
+      overflow: hidden;
+    }
+
+    #drag {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, .4);
+    }
+  </style>
+</head>
+<body>
+  <div id="small">
+    <img src="./img1.jpg" alt="">
+    <div id="drag"></div>
+  </div>
+  <div id="big">
+    <img src="./img2.jpg" alt="">
+  </div>
+
+  <script>
+    var oSmall = document.getElementById('small');
+    var oDrag = document.getElementById('darg');
+    var oBig = document.getElementById('big');
+
+    oSmall.onmouseover = function(){
+      oDrag.style.display = 'block';
+      oBig.style.display = 'block';
+    };
+    oSmall.onmouseout = function(){};
+  </script>
+</body>
+</html>

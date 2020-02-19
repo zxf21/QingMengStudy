@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>轮播图</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    img {
+      width: 520px;
+      height: 280px;
+    }
+
+    #container {
+      position: relative;
+      width: 520px;
+      height: 280px;
+      margin: 100px auto;
+    }
+
+    #imgs img {
+      display: none;
+    }
+
+    #imgs .selected {
+      display: block;
+    }
+
+    #nav {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+
+    #nav li, #arrows span {
+      float: left;
+      margin-right: 5px;
+      width: 20px;
+      height: 20px;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      line-height: 20px;
+      cursor: pointer;
+    }
+
+    #nav .nav-selected {
+      background-color: orange;
+    }
+
+    #arrows {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="imgs">
+      <!-- img[src=img/$.jpg]*4 图片引用快捷键 -->
+      <img class="selected" src="img/img1.jpg" alt="">
+      <img src="img/img2.jpg" alt="">
+      <img src="img/img3.jpg" alt="">
+      <img src="img/img4.jpg" alt="">
+    </div>
+    <ul id="nav">
+      <li class="nav-selected">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+    <div id="arrows">
+      <span id="prev"> &lt; </span>
+      <span id="next"> &gt; </span>
+    </div>
+  </div>
+
+  <script>
+    var oContainer = document.getElementById('container');
+    var oNav = document.getElementById('nav');
+    var aLis = oNav.getElementsByTagName('li');
+    var oImgs = document.getElementById('imgs');
+    var aImg = oImgs.getElementsByTagName('img');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var iNowIndex = 0; //全局变量，保存当前所取到的索引
+    var timer = null; //播放的定时器
+    // console.log(aLis.length);
+
+    for(var i = 0; i < aLis.length; i++) {
+      aLis[i].index = i; //给每个li对象自定义属性index
+
+      aLis[i].onmouseover = function() {
+        iNowIndex = this.index;
+        changeImg();
+      }
+    }
+
+    /*
+      往后： nav+1，对应的nav改变背景颜色 对应的图片显示
+      往钱： nav-1，对应的nav改变背景颜色 对应的图片显示
+    */
+
+    oPrev.onclick = oNext.onclick = function() {
+      if(this === oNext) {//往后
+        iNowIndex++;
+        if(iNowIndex === aLis.length){
+          iNowIndex = 0;
+        };
+
+      }else{//往前
+        iNowIndex--;
+        if(iNowIndex === -1){
+          iNowIndex = aLis.length - 1;
+        }
+      }
+      changeImg();
+    }
+    //停止播放
+    oContainer.onmouseover = function(){
+      clearInterval(timer);
+    };
+  //继续播放
+    oContainer.onmouseleave = function(){
+      play();
+    }
+
+    //自动播放
+    play();
+
+    //  切换图片
+    function changeImg() {
+      for(var i = 0; i < aLis.length; i++) {
+          aLis[i].className = '';
+          aImg[i].className = '';
+
+        aLis[iNowIndex].className = 'nav-selected';
+        aImg[iNowIndex].className = 'selected';
+        }
+    }
+    
+    //自动播放
+    function play() {
+      timer = setInterval(function(){
+      oNext.onclick();
+    },1000)
+    }
+
+  </script>
+</body>
+</html>

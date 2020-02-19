@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #boxn {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      background-color: pink;
+      top: 100px;
+      left: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <script>
+    var oBox = document.getElementById('box');
+    console.log(oBox.offsetParent);
+    console.log(oBox.offsetTop);
+    console.log(oBox.offsetLeft);
+    console.log(oBox.offsetWidth);
+    console.log(oBox.offsetHeight);
+  </script>
+</body>
+</html>

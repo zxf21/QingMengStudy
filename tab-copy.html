@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #container {
+      width: 400px;
+      height: 300px;
+      margin: 100px auto;
+      border: 1px solid #000;
+    }
+
+    #nav {
+      height: 30px;
+      list-style: none;
+      border-bottom: 1px solid;
+    }
+
+    #nav li {
+      width: 120px;
+      height: 30px;
+      line-height: 30px;
+      background-color: #ccc;
+      margin-right: 5px;
+      text-align: center;
+      cursor: pointer;
+      float: left;
+    }
+
+    #nav .nav-selected {
+      background-color: #000;
+      color: #fff;
+    }
+
+    #content div {
+      display: none;
+    }
+
+    #content .content-selected {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="container">
+    <ul id="nav">
+      <li class="nav-selected">html</li>
+      <li>css</li>
+      <li>javascript</li>
+    </ul>
+    <div id="content">
+      <div class="content-selected">学习html</div>
+      <div>学习css</div>
+      <div>学习javascript</div>
+    </div>
+  </div>
+
+
+  <script>
+    var oNav = document.getElementById('nav');
+    var aLis = document.getElementsByTagName('li');
+    var oContent = document.getElementById('content');
+    var aDivs = oContent.getElementsByTagName('div');
+
+    for(var i = 0; i < aLis.length; i++) {
+
+      aLis[i].index = i;//获取li的索引，并保存
+      
+      aLis[i].onclick = function () {
+
+        //先去除所有按钮的背景色
+        for(var i = 0; i < aLis.length; i++) {
+          aLis[i].className = '';
+          aDivs[i].className = '';
+        }
+
+        //点击按钮的时候，背景颜色改变
+        this.className = 'nav-selected';
+        aDivs[this.index].className = 'content-selected';
+      }
+    }
+  
+  </script>
+</body>
+</html>
