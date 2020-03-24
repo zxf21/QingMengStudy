@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      div{
+			position: relative;
+			/* margin: 100px auto; */
+			width: 224px;
+			height: 180px;
+      border: 1px solid;
+		}
+    div .a {
+      width: 200px;
+      height: 180px;
+    }
+		div img{
+			position: absolute;
+			left: 0;
+			top: 0;
+			transition: all 2s;
+		}
+
+    div img:first-child{
+			z-index: 1;
+			backface-visibility: hidden;
+		}
+		div:hover img{
+			transform: rotateY(180deg);
+		}
+  </style>
+</head>
+<body>
+  <div>
+  <img class="a" src="../img/s.svg" alt="">
+  <img class="b" src="../img/logo.png" alt="">
+  </div>
+</div>
+</body>
+</html>

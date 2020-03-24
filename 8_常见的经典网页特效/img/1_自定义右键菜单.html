@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义右键菜单</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    #menu {
+      display: none;
+      margin: 100px auto;
+      width: 120px;
+      border: 1px solid #000;
+    }
+
+    #menu .item {
+      list-style: none;
+      width: 120px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-bottom: 1px dashed #ccc;
+    }
+
+    #menu .item:last-child {
+      border: none;
+    }
+
+    .item:hover {
+      background-color: #ccc;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <ol id="menu">
+    <li class="item">菜单1</li>
+    <li class="item">菜单2</li>
+    <li class="item">菜单3</li>
+    <li class="item">菜单4</li>
+    <li class="item">菜单5</li>
+  </ol>
+
+  <script>
+    var oMenu = document.getElementById('menu');
+    var aLis = oMenu.getElementsByTagName('li');
+    // console.log(aLis);
+
+    //右键菜单
+    window.oncontextmenu = function(e) {
+
+      oMenu.styleduuukkeu.display = 'block';
+
+      return false;//取消浏览器的默认右键菜单  阻止浏览器默认行为
+    }
+    
+  </script>
+</body>
+</html>

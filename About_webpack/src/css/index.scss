@@ -1,0 +1,9 @@
+@import './commom.scss';
+
+img {
+  width: 500px;
+  height: 500px;
+  transform: translate(100px,200px);
+  z-index: 9999;
+}
+
