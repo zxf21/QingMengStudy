@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn1">暂停</button>
+  <script>
+    // setTimeout(function() {
+    //   console.log(Math.random());    
+    // },1000);
+    var btn = document.getElementById('btn1');
+    var timer;
+
+    var n = 0;
+
+    var timer = setInterval(function () {
+      console.log(n++);
+    }, 1000)
+
+    btn.onclick = function () {
+      clearInterval(timer);     
+    }
+  </script>
+</body>
+
+</html>
