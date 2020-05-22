@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #progress {
+      background-color: #f00;
+      width: 5px;
+      height: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress"></div>
+  <script>
+    var oProgress = document.getElementById('progress');
+    var w = 0;
+    function fn() {
+      w += 5;
+      oProgress.style.width = w + 'px';
+      if(w < 800) {
+        requestAnimationFrame(fn);
+      }
+    }
+
+    fn();
+
+    //requestAnimationFrame 刷新频率跟显示器的刷新频率是一样的，所以能够最大性能的调动当前浏览器的刷新频率
+  </script>
+</body>
+</html>
