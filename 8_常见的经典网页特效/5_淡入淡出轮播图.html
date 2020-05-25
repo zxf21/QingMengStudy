@@ -15,6 +15,10 @@
       list-style: none;
     }
 
+    #container {
+      position: relative;
+    }
+
     #imgs {
       height: 500px;
       position: relative;
@@ -28,6 +32,7 @@
       top: 0;
       left: 0;
       width: 100%;
+      transition: all 1s ease;
     }
 
     #imgs .banner1 {
@@ -62,7 +67,38 @@
       filter: alpha(opacity=30);
       float: left;
       margin-right: 8px;
+      cursor: pointer;
     }
+
+    #nav .selected {
+      background-color: #fff;
+      opacity: .6;
+      filter: alpha(opacity=60);
+    }
+
+    /* #arrows {
+      position: absolute;
+      bottom: 10px;
+      left: 35px;
+    }
+
+    #arrows span {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      background-color: #ccc;
+      color: #000;
+      cursor: pointer;
+      opacity: .6;
+      filter: alpha(opacity=60);
+    }
+
+    #arrows span:hover {
+      background-color: #000;
+      color: #fff;
+    } */
 
   </style>
 </head>
@@ -87,7 +123,40 @@
       <li></li>
       <li></li>
     </ul>
+    <!-- <div id="arrows">
+      <span id="prev">&lt;</span>
+      <span id="next">&gt;</span>
+    </div> -->
   </div>
+
+  <script>
+    var oContainer = document.getElementById('container');
+    var oNav = document.getElementById('nav');
+    var aLis = oNav.getElementsByTagName('li');
+    var oImgs = document.getElementById('imgs');
+    var aBanners = oImgs.getElementsByTagName('div');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var iNowIndex = 0;
+    var timer;
+
+    for(var i = 0; i < aLis.length; i++) {
+      aLis[i].index = i;
+      // console.log(i)  打印出0.1.2
+      aLis[i].onmouseover = function() {
+        iNowIndex = this.index;
+        for(var i = 0; i < aLis.length; i++) {
+          aLis[i].className = '';
+          aBanners[i].className = 'banner' + (i + 1);
+        };
+        aLis[iNowIndex].className = 'selected';
+        aBanners[iNowIndex].className += ' actived';
+      }
+    }
+
+
+    
+  </script>
 </body>
 
 </html>
