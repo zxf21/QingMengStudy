@@ -26,21 +26,18 @@
       var oDrag = document.getElementById('drag');
       oDrag.onmousedown = function(e) {
         e = e || window.event;
-        //当鼠标点击时，求出鼠标距离drag边的距离
         var disX = e.clientX - oDrag.offsetLeft;
         var disY = e.clientY - oDrag.offsetTop;
-
 
         document.onmousemove = function(e) {
           e = e || window.event;
           oDrag.style.left = e.clientX - disX + 'px';
           oDrag.style.top = e.clientY - disY + 'px';
         }
-
-        oDrag.onmouseup = function() {
+        
+        oDrag.onmouseup = function () {
           document.onmousemove = null;
         }
-
       }
     </script>
     
