@@ -5,11 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    color: '#fd4d4d',
+    color: '#f00',
     title: '电影'
   },
   mutations: {
-    change(state,obj){
+    change(state, obj) {
       state.color = obj.color;
       state.title = obj.title;
     }

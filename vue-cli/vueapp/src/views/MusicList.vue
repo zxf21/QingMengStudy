@@ -1,40 +1,35 @@
 <template>
   <div>
-    <Aplayer v-if="isShow"
-      autoplay
-      :music="musicData[0]"
-      :list="musicData"
-      showLrc
-    />
     <!-- {{$route.query.id}} -->
+    <Aplayer v-if="isShow" :music="musicData[0]" :list="musicData" showLrc />
   </div>
 </template>
 
 <script>
-import Aplayer from 'vue-aplayer'
-import axios from 'axios'
+import Aplayer from "vue-aplayer";
+import axios from "axios";
 export default {
-  data(){
+  data() {
     return {
       musicData: [],
       isShow: false,
-    }
+    };
   },
   components: {
-    Aplayer
+    Aplayer,
   },
-  created(){
-    axios.get('data/musicdata.json')
-    .then((res)=>{
-      this.musicData = res.data.musicData;
-      this.isShow = true;
-    }).catch(()=>{
-      console.log('失败')
-    })
-  }
-}
+  created() {
+    axios
+      .get("/data/musicdata.json")
+      .then((res) => {
+        this.musicData = res.data.musicData;
+        this.isShow = true;
+      })
+      .catch((res) => {
+        console.log(res);
+      });
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

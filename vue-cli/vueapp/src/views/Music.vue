@@ -1,38 +1,41 @@
 <template>
   <div>
-     <img 
-        v-for="obj in musicList" 
-        :key="obj.id" 
-        :src="obj.bg" 
-        @click="goList(obj.id)"
-        alt=""
-     >
+    <img 
+    v-for="obj in musicList" 
+    :key="obj.id" 
+    :src="obj.bg" 
+    @click="goList(obj.id)"
+    alt=""
+    >
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-  data(){
+  data() {
     return {
       musicList: []
     }
   },
-  created(){
-    axios.get('data/musiclist.json')
-    .then((res)=>{
-      this.musicList = res.data.albums;
-    }).catch(()=>{
-      console.log("失败")
-    })
+  created() {
+    axios
+      .get("data/musiclist.json")
+      .then((res) => {
+        // console.log(res.data.albums);
+        this.musicList = res.data.albums
+      })
+      .catch((res) => {
+        console.log(res);
+      });
   },
   methods: {
-    goList(id){
-      //跳转到MusicList
+    goList(id) {
+      //跳转到music-list
       this.$router.push({path:'/music-list',query:{id}})
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

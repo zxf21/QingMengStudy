@@ -1,34 +1,29 @@
 <template>
   <div id="app">
-    <HeaderNav />
-    <div id="container">
+    <common-header></common-header>
+    <div class="container">
       <router-view></router-view>
     </div>
-    <!-- <router-view /> -->
-    <FooterNav />
-    <!-- <Home /> -->
+    <common-footer></common-footer>
   </div>
 </template>
-
 <script>
-import HeaderNav from "@/components/HeaderNav"
-import FooterNav from "@/components/FooterNav"
+import CommonHeader from './components/CommonHeader'
+import CommonFooter from './components/CommonFooter'
 export default {
   components: {
-    HeaderNav,
-    FooterNav
+    CommonHeader,
+    CommonFooter
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   #app {
-    font-family: Avenir,Arial, Helvetica, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
+
+
+    .container {
+      margin: 1rem 0;
+    }
   }
-#container {
-  margin: 1rem 0;
-}
 </style>

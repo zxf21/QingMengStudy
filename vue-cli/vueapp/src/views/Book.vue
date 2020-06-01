@@ -9,41 +9,40 @@
 </template>
 
 <script>
-import 'vue-swipe/dist/vue-swipe.css'//引入组件样式
-import {Swipe,SwipeItem} from 'vue-swipe'//引入轮播图组件
+import { Swipe, SwipeItem } from "vue-swipe";
+import "vue-swipe/dist/vue-swipe.css";
 export default {
   components: {
     Swipe,
-    SwipeItem
-  }
-}
+    SwipeItem,
+  },
+};
 </script>
-
 <style lang="scss" scoped>
-  .my-swipe {
-    height: 200px;
-    color: #fff;
-    font-size: 30px;
-    text-align: center;
-  }
+.my-swipe {
+  height: 200px;
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+}
 
-  .slide1 {
-    // background-color: #0089dc;
-    background: url(../assets/img/01.jpg) no-repeat;
-    background-size: 6.4rem 4rem;
-    color: #fff;
-  }
+.slide1 {
+  //   background-color: #0089dc;
+  background: url(../assets/img/01.jpg) no-repeat;
+  background-size: 6.4rem 4rem;
+  color: #fff;
+}
 
-  .slide2 {
-    background: url(../assets/img/02.jpg) no-repeat;
-    background-size: 6.4rem 4rem;
-    // background-color: #ffd70f;
-    color: #000;
-  }
-  .slide3 {
-    background: url(../assets/img/03.jpg) no-repeat;
-    background-size: 6.4rem 4rem;
-    // background-color: #ff2d4b;
-    color: #fff;
-  }
+.slide2 {
+  background: url(../assets/img/02.jpg) no-repeat;
+  background-size: 6.4rem 4rem;
+
+  color: #000;
+}
+
+.slide3 {
+  background: url(../assets/img/03.jpg) no-repeat;
+  background-size: 6.4rem 4rem;
+  color: #fff;
+}
 </style>

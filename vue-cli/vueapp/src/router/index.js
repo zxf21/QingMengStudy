@@ -1,40 +1,48 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Movie from '../views/Movie'
+import Error from '../views/Error.vue'
+import Movie from '../views/Movie.vue'
 import MovieDetail from '../views/MovieDetail.vue'
-import Music from '../views/Music'
-import MusicList from '../views/MusicList'
-import Book from '../views/Book'
-import Photo from '../views/Photo'
+import Music from '../views/Music.vue'
+import MusicList from '../views/MusicList.vue'
+import Book from '../views/Book.vue'
+import Photo from '../views/Photo.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
+  const routes = [
   {
     path: '/',
     redirect: '/movie'
-  },{
+  },
+  {
+    path: '/Photo',
+    component: Photo
+  },
+  {
     path: '/movie',
     component: Movie
-  },{
+  },
+  {
     path: '/movie-detail',
     component: MovieDetail
-  },{
-    path: '/music',
+  },
+  {
+    path: '/Music',
     component: Music
-  },{
-    path: '/book',
-    component: Book
-  },{
-    path: '/photo',
-    component: Photo
-  },{
+  },
+  {
     path: '/music-list',
     component: MusicList
-  },{
-    path: '*',//404
-    component: Error
   },
+  {
+    path: '/Book',
+    component: Book
+  },
+  {
+    path: '*',
+    component: Error
+  }
 ]
 
 const router = new VueRouter({
