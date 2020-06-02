@@ -1,12 +1,20 @@
 <template>
   <header :style="{background: $store.state.color}">
-    <span class="home">首页</span>
+    <span @click="goHome()" class="home">首页</span>
     {{$store.state.title}}
   </header>
 </template>
 
 <script>
 export default {
+  methods: {
+    goHome() {
+      //路径跳转首页
+      this.$router.push('/movie');
+      //触发mutations中的change方法修改state中存的color和title
+      this.$store.commit('change', {color: 'red', title: '电影'})
+    }
+  }
 
 }
 </script>

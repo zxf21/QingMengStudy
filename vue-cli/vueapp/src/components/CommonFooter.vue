@@ -51,7 +51,7 @@ export default {
     // this.$route.path
     this.menu.forEach((obj) => {
       //如果当前路径跟menu的某个匹配的，修改成匹配的颜色
-      if(obj.path == this.$route.path) {
+      if(this.$route.path.includes(obj.path)) { //只要包含 /music
         this.change(obj)
       }
     })
