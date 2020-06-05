@@ -1,5 +1,5 @@
 <template>
-  <div class="movie-container">
+  <div class="movie-container" v-if="isShow">
     <div class="movie-detail">
       <img :src="movieInfo.images.small" alt="" />
       <div class="movie-content">
@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       movieInfo: {},
+      isShow: false
     };
   },
   created() {
@@ -30,6 +31,7 @@ export default {
       .then((res) => {
         // console.log(res.data);
         this.movieInfo = res.data;
+        this.isShow = true;
       })
       .catch((res) => {
         console.log(res);

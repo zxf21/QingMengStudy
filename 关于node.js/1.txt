@@ -1,0 +1,10 @@
+1、node安装包、vscode
+2、node--安装
+3、node执行shell  mac--iterm windows--shell powershell gitshell linux--终端
+
+
+node--V8解释器  执行js代码
+
+node三种类型模块  原生模块  第三方模块  自定义模块
+node后端开发 中间层开发 js代码为前端服务
+node http 创建webServer  php--Apache Nginx java--Tomcat webLogic

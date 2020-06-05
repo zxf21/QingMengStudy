@@ -1,11 +1,12 @@
 <template>
   <div>
     <ul class="movie-container" v-if="isShow">
-      <li class="movie-list"
-       v-for="obj in movieList"
+      <li
+        class="movie-list"
+        v-for="obj in movieList"
         :key="obj.id"
-        @click="$router.push({path:'/movie-detail',query:{id:obj.id}})"
-        >
+        @click="$router.push({ path: '/movie-detail', query: { id: obj.id } })"
+      >
         <img :src="obj.images.small" alt />
         <div class="content">
           <h3>{{ obj.title }}</h3>
@@ -72,7 +73,7 @@ export default {
         )
         .then((res) => {
           console.log(res.data.subjects);
-          this.movieList = [...this.movieList,...res.data.subjects];
+          this.movieList = [...this.movieList, ...res.data.subjects];
           this.isShow = true;
           this.loadingShow = false;
         })
