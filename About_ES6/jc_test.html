@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //传统形式------>原型链
+        // Grand.prototype.lastName = 'Ji';
+
+        // function Grand() {
+
+        // }
+        // var grand = new Grand();
+        // Father.prototype = grand;
+
+        // function Father() {
+        //     this.name = 'hehe';
+        // }
+        // var father = new Father();
+
+        // Son.prototype = father;
+
+        // function Son() {
+
+        // }
+
+        // var son = new Son();
+
+
+        //借用构造函数
+        // function Person(name, age, sex) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sex = sex;
+        // }
+
+        // function Student(name, age, sex, grade) {
+        //     Person.call(this, name, age, sex)
+        // }
+
+        // var student = new Student('zs', 12, 'nv', 2);
+
+
+
+
+        // //共享原型
+        // Father.prototype.lastName = 'Tao';
+
+        // function Father() {
+
+        // }
+
+        // function Son() {
+
+        // }
+
+        // // Son.prototype = Father.prototype;
+        // // var son = new Son();
+        // // var father = new Father();
+
+
+        // //封装函数（继承）
+        // function inherit(Target, Origin) {
+        //     Target.prototype = Origin.prototype;
+        // }
+
+        // inherit(Son, Father);
+        // Son.prototype.sex = 'male';
+        // var son = new Son();
+        // var father = new Father();
+
+
+        //圣杯模式
+
+        // function Deng(name, wife) {
+        //     var preparewife = 'xiaozhang';
+        //     this.name = name;
+        //     this.wife = wife;
+        //     this.divorce = function() {
+        //         this.wife = preparewife;
+        //     }
+
+        //     this.changePrepareWife = function(target) {
+        //         prepareWife = target;
+        //     }
+        //     this.sayPrepareWife = function() {
+        //         console.log(prepareWife);
+        //     }
+        // }
+
+        // var deng = new Deng('deng', 'xiaoliu')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // function inherit(Target, Origin) {
+        //     function F() {};
+        //     F.prototype = Origin.prototype;
+        //     Target.prototype = new F();
+        //     Target.prototype.constructor = Target;
+        //     Target.prototype.uber = Origin.prototype;
+        // }
+
+        // var inherit = (function() {
+        //     var F = function() {};
+        //     return function(Target, Origin) {
+        //         F.prototype = Origin.prototype;
+        //         Target.prototype = new F();
+        //         Target.prototype.constructor = Target;
+        //         Target.prototype.uber = Origin.prototype;
+        //     }
+        // }());
+
+
+
+        // Father.prototype.lastName = '赵';
+
+        // function Father() {
+
+        // }
+
+        // function Son() {
+
+        // }
+
+        // inherit(Son, Father);
+        // var son = new Son();
+        // var father = new Father();
+
+
+
+
+
+
+        // function Wheel(wheelSize, style) {
+        //     this.style = style;
+        //     this.wheelSize = wheelSize;
+        // }
+
+        // function Sit(c, sitColor) {
+        //     this.c = c;
+        //     this.sitColor = sitColor;
+        // }
+
+        // function Model(height, width, len) {
+        //     this.height = height;
+        //     this.width = width;
+        //     this.len = len;
+        // }
+
+        // function Car(wheelSize, style, c, sitColor, height, width, len) {
+        //     Wheel.apply(this, [wheelSize, style]);
+        //     Sit.aapply(this, [c, sitColor]);
+        //     Model.call(this, height, width, len);
+        // }
+
+        // var car = new Car(100, '好看', '舒适', 'blue', 5000, 4000, 123);
+
+
+
+
+
+
+
+        // function Person(name, age, sex) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sex = sex;
+        // }
+
+        // function Student(name, age, sex, tel, grade) {
+        //     Person.call(this, name, age, sex)
+        //     this.tal = tel;
+        //     this.grade = grade;
+        // }
+
+
+
+        // var student = new Student('sunny', 123, 'male', 139, 2017)
+
+
+
+
+
+
+
+
+
+
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        // }
+
+        // var person = new Person('zxf', 18);
+        // var obj = {
+
+        // }
+
+        // Person.call(obj, 'tao', 300); //不new的话person默认指向window，person.call（obj），这个时候this指向obj，this.name变成obj.name
+
+
+        // for (var i = 0; i < 10; i++) {
+        //     var num = Math.floor(Math.random() * 100);
+        //     console.log(num);
+        // }
+
+
+        // var num = 123;
+        // num.toString();
+
+
+        // Number.prototype.toString = function() {
+        //     return 'zhaoxuefei';
+        // }
+        // document.write(123)
+
+        // var obj = Object.create(null);
+        // obj.toString = function() {
+        //     return '123'
+        // }
+        // document.write(obj);
+
+
+
+
+
+        // Person.prototype.name = 'sunny';
+
+        // function Person() {
+
+        // }
+
+        // var person = Object.create(Person.prototype)
+
+        // var obj = Object.create(null);
+
+
+        //a.sayName()   sayName里面的this指向是，谁调用的这个方法，this就指向谁
+        // Person.prototype = {
+        //   height: 100,
+        // }
+
+        // function Person() {
+        //   this.eat = function() {
+        //     this.height++
+
+        //     return 1;
+        //   }
+        // }
+
+        // var person = new Person();
+
+
+
+
+        // Grand.prototype.__proto__ = Object.prototype;
+        // Grand.prototype.lastName = 'zhao'
+
+        // function Grand() {
+
+        // }
+
+        // var grand = new Grand();
+
+        // Father.prototype = grand;
+
+        // function Father() {
+        //   this.name = 'xuefei';
+        //   this.fortune = {
+        //     card1: 'visa'
+        //   }
+        //   this.num = 100;
+        // }
+
+        // var father = new Father();
+
+        // Son.prototype = father;
+
+        // function Son() {
+        //   this.hobbit = 'singing'
+        // }
+
+        // var son = new Son();
+
+
+
+
+
+
+
+
+
+
+        // Person.prototype.name = 'sunny';
+
+        // function Person() {
+        //   //var this = {__proto__:Person.prototype}
+        // }
+        // var person = new Person();
+        // Person.prototype.name = 'cherry';
+        // Person.prototype = {
+        //   name: 'cherry'
+        // }
+
+        // var obj = {
+        //   name: 'a'
+        // }
+        // var obj1 = obj;
+        // obj = {
+        //   name: 'b'
+        // }
+
+
+
+        // Person.prototype.name = 'abc';
+
+        // function Person() {
+        //   // var this = {
+        //   // __proto__: Person.prototype
+        //   // }
+        // }
+
+        // var obj = {
+        //   name: "sunny"
+        // }
+
+        // var person = new Person();
+
+
+
+        // Person.prototype ---------原型
+        // Person.prototype = {}
+
+        // function Person() {
+
+        // }
+
+        // Car.prototype = {
+        //   constructor: Person
+        // }
+
+        // Car.prototype.height = 1400;
+        // Car.prototype.lang = 4900;
+        // Car.prototype.catName = 'BMW';
+        // Car.prototype = {
+        //   height: 1400,
+        //   lang: 4900,
+        //   carName: 'BMW'
+        // }
+
+        // Car.prototype = '123'
+
+        // function Car() {
+
+        // }
+        // var car = new Car();
+
+
+        // Person.prototype.lastName = 'Zhao'
+
+        // function Person(name) {
+        //   this.name = name;
+        // }
+
+        // var person = new Person('xuefei');
+
+
+        // Car.prototype.height = 1400;
+        // Car.prototype.lang = 4900;
+        // Car.prototype.CarName = 'BMW';
+
+        // function Car(color, owner) {
+        //   this.owner = owner;
+        //   this.color = color;
+        // }
+
+        // var car = new Car('red', 'prof.ji');
+        // var car1 = new Car('pink', 'zxf')
+
+
+
+        // Person.prototype.LastName = 'zhao';
+        // Person.prototype.say = function () {
+        //   console.log('hehe');
+        // }
+
+        // function Person(name, age, sex) {
+        //   this.name = name;
+        //   this.age = age;
+        //   this.sex = sex;
+        // }
+
+        // var person = new Person('hongjun', 35, "male");
+
+
+
+        //返回字符串字节长度
+        // 1.当前字符位的unicode>255，那么该字符字节长度为2
+        // 2.<=255为1
+        // var str = 'acguykguigvaduiz赵';
+
+        // function bytesLength(str) {
+        //   // var count = str.length;
+        //   // for (var i = 0; i < str.length; i++) {
+        //   //   if (str.charCodeAt(i) > 255) {
+        //   //     count++;
+        //   //   }
+        //   // }
+        //   var count = 0;
+        //   for (var i = 0; i < str.length; i++) {
+        //     if (str.charCodeAt(i) < 255) {
+        //       count += 2;
+        //     } else {
+        //       count++;
+        //     }
+        //   }
+        //   return count;
+        // }
+
+
+        // var o = new Object();
+        // o.__proto__ = Foo.prototype;
+        // Foo.call(o)
+
+        // function Point(x, y) {
+        //   this.x = x;
+        //   this.y = y;
+        // }
+
+        // Point.prototype.toString = function () {
+        //   return "('+ this.x +', '+ this.y +')"
+        // }
+
+        // var p = new Point(1, 2)
+        // console.log(p);
+
+
+
+        // class Point {
+        //   constructor(x, y) {
+        //     this.x = x;
+        //     this.y = y;
+        //   }
+
+        //   toString() {
+        //     return `('+ this.x + ', '+ this.y +')`
+        //   }
+        // }
+
+        // console.log(typeof Point);
+        // console.log(Point.prototype.constructor);
+
+        //使用 class 关键字创建的对象
+        // "use strict"
+        // class Polygon {
+        //   constructor(height, width) {
+        //     this.height = height;
+        //     this.width = width;
+        //   }
+        // }
+
+        // class Square extends Polygon {
+        //   constructor(sideLength) {
+        //     super(sideLength, sideLength)
+        //   }
+        //   get area() {
+        //     return this.height * this.width;
+        //   }
+        //   set sideLength(newLength) {
+        //     this.height = newLength;
+        //     this.width = newLength;
+        //   }
+        // }
+
+        // var square = new Square(2)
+
+        //使用object.create创建对象
+        // var a = {
+        //   a: 1
+        // };
+        // var b = Object.create(a);
+        // console.log(b.a); //打印1，1是继承自a的属性
+        // var c = Object.create(b);
+        // console.log(c.a);
+        // var d = Object.create(null);
+        // console.log(d.hasOwnProperty);//打印undefined，因为d没有继承object.prototype，d的继承原型是null，null没有原型，终止函数；
+
+
+        //通过构造函数创建对象
+        // function Person() {
+        //   this.name = '张三',
+        //     this.age = 18
+        // }
+
+        // Person.prototype = {
+        //   say: function (mes) {
+        //     this.name.push(mes);
+        //   }
+        // };
+
+        // var p = new Person();
+        // console.log(p.hasOwnProperty('name'));
+
+
+        //通过语法结构创造对象
+        // function f() {
+        //   return 2;
+        // }
+        // console.log(f.prototype);  
+
+        // var a = [
+        //   'yo', 'whadup', '?'
+        // ]
+        // console.log(a.__proto__);
+
+        // var o = {
+        //   a: 1
+        // }
+        // console.log(o.prototype);
+
+
+
+
+
+
+
+        // function doSomething() {};
+        // doSomething.prototype.foo = 'bar';
+        // var doSomeInstancing = new doSomething();
+        // doSomeInstancing.prop = 'some value';
+        // console.log("doSomeInstancing.prop:      " + doSomeInstancing.prop);
+        // console.log("doSomeInstancing.foo:       " + doSomeInstancing.foo);
+        // console.log("doSomething.prop:           " + doSomething.prop);
+        // console.log("doSomething.foo:            " + doSomething.foo);
+        // console.log("doSomething.prototype.prop: " + doSomething.prototype.prop);
+        // console.log("doSomething.prototype.foo:  " + doSomething.prototype.foo);
+
+
+        // function doSomething() {};
+        // doSomething.prototype.foo = 'bar';
+        // var doSomeInstancing = new doSomething();
+        // doSomeInstancing.prop = 'some value';
+        // console.log(doSomeInstancing);
+
+        // console.log(doSomething.prototype);
+
+        // var doSomething = function () {};
+        // console.log(doSomething.prototype);
+
+
+
+
+        //由继承的方法创造出来的对象，若对象自身有属性，调用对象的时候，this是指向自身的属性
+        // var o = {
+        //   a: 2,
+        //   m: function () {
+        //     return this.a + 1;
+        //   }
+        // }
+
+        // console.log(o.m());
+
+        // var p = Object.create(o);
+        // p.a = 4;
+        // console.log(p.a);
+        // console.log(p.m());
+
+
+
+
+
+
+
+
+
+
+        // function f() {
+        //   this.a = 1;
+        //   this.b = 2;
+        // }
+
+        // let o = new f();
+
+        // f.prototype.b = 3;
+        // f.prototype.c = 4;
+
+        // console.log(o.a);
+        // console.log(o.b);
+        // console.log(o.c);
+        // console.log(f.prototype);
+    </script>
+</body>
+
+</html>

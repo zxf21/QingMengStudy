@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //深克隆  两个内存地址
+    // var obj = {
+    //   name: 'abc',
+    //   age: 123,
+    //   card: ['visa', 'master'],
+    //   wife: {
+    //     name: 'bcd',
+    //     son: {
+    //       name: 'aaa'
+    //     }
+    //   }
+    // }
+
+    // var obj1 = {
+
+    // }
+
+    // //遍历对象 || 数组(prop代表数组的索引)  for(var prop in obj)
+    // //1.判断是不是原始值  typeof()  object
+    // //2.判断引用值是数组还是对象 instaceof  toString constructor
+    // //3.建立相应的数组或对象
+    // //递归
+
+    // function deepClone(origin, target) {
+    //   var target = target || {};
+    //   toStr = Object.prototype.toString,
+    //     arrStr = "[Object Array]";
+    //   for (var prop in origin) {
+
+    //     if (origin.hasOwnProperty(prop)) {
+    //       if (origin[prop] !== 'null' && typeof (origin[prop]) == 'object') {
+
+    //         // if (toStr.call(origin[prop]) == arrStr) {
+    //         //   target[prop] = []
+    //         // } else {
+    //         //   target[prop] = {}
+    //         // }
+
+    //         target[prop] = toStr.call(origin[prop]) == arrStr ? [] : {}
+    //         deepClone(origin[prop], target[prop])
+
+
+    //       } else {
+    //         target[prop] = origin[prop];
+    //       }
+    //     }
+    //   }
+    //   return target;
+    // }
+
+
+    //浅克隆  一个内存地址
+    // var obj = {
+    //   name: 'abc',
+    //   age: 123,
+    //   sex: 'female'
+    // }
+
+    // var obj1 = {};
+    // //target目标    origin原始的
+    // function clone(origin, target) {
+    //   var target = target || {};
+    //   for (var prop in obj) {
+    //     target[prop] = origin[prop];
+    //   }
+    //   return target;
+    // }
+
+    // clone(obj, obj1)
+
+
+
+    // var bar = {
+    //   a: '002'//a:{'a'}
+    // };
+
+    // function print() {
+    //   bar.a = 'a';
+    //   Object.prototype.b = 'b';
+    //   return function inner() {
+    //     console.log(bar.a);
+    //     console.log(bar.b);
+    //   }
+    // }
+    // print()();//第一个括号返回的是个函数，return inner（），第二个括号是执行函数
+
+
+
+    // function print() {
+    //   var marty = {
+    //     name: 'marty',
+    //     printName: function () {
+    //       console.log(this.name)
+    //     }
+    //   }
+    //   var test1 = {
+    //     name: 'test1'
+    //   }
+    //   var test2 = {
+    //     name: 'test2'
+    //   }
+    //   var test3 = {
+    //     name: 'test3'
+    //   }
+    //   test3.printName = marty.printName;
+    //   var printName2 = marty.printName.bind({
+    //     name: 123
+    //   })
+    //   marty.printName.call(test1) //test1
+    //   marty.printName.call(test2) //tets2
+    //   marty.printName(); //marty
+    //   printName2(); //
+    //   test3.printName(); //test3
+    // }
+
+    // print();
+
+    // function print() {
+    //   var test;
+    //   test();
+    //   function test() {
+    //     console.log(1);
+    //   }
+    // }
+
+    // print();
+
+
+    // var a = 5;
+    // function test() {
+    //   a = 0;
+    //   alert(a); //0  预编译环节a是undefined，然后执行的时候a = 0，所以打印0
+    //   alert(this.a); //  5预编译环节的this指向window
+    //   var a;
+    //   alert(a); //  0最后一个打印test内部的a
+    // }
+    // test();
+
+
+    // var a = 5;
+    // function test() {
+    //   //var this = {
+    //   //__proto__: test.prototype
+    //   //}
+    //   a = 0;
+    //   console.log(a); //0  预编译环节a是undefined，然后执行的时候a = 0，所以打印0
+    //   console.log(this.a); //  5预编译环节的this指向window
+    //   var a;
+    //   console.log(a); //  0最后一个打印test内部的a
+    // }
+    // new test();
+
+
+
+
+    // var foo = '123';
+
+    // function print() {
+    //   var foo = "456";
+    //   this.foo = '678';
+    //   console.log(foo)
+    // }
+    // print();
+
+
+    //foo是全局的属性，this.foo指向window，所有的属性都归window所有所以678覆盖123
+    // var foo = '123';
+
+    // function print() {
+    //   this.foo = '678';
+    //   console.log(foo)
+    // }
+    // print();
+
+
+    //这个时候的this指向print，但是这里面没有foo属性，所以去找全局上的foo
+    // var foo = '123';
+    // function print() {
+    //   //var this = Object.creaete(print.prototype)
+    //   this.foo = '678';
+    //   console.log(foo)
+    // }
+    // new print();
+
+
+
+    // function myIsNaN(num) {
+    //   var ret = Number(num);
+    //   ret += '';
+    //   if (ret == 'NaN') {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // }
+
+    // var x = 1;
+    // if (function f() {}) {
+    //   x += typeof f;
+    // }
+    // console.log(x)
+
+    // var f = (
+    //   function f() {
+    //     return '1'
+    //   },
+    //   function g() {
+    //     return 2;
+    //   }
+    // )();
+    // typeof f;
+
+    // function b(x, y, a) {
+    //   arguments[2] = 10;
+    //   alert(a);
+    // }
+    // b(1, 2, 3);
+    // a = 10;
+    // alert(arguments[2])
+    // var arr = [];
+    // var s = function () {}
+    // function foo() {
+    //   bar.apply(null, arguments);
+    // }
+
+    // function bar() {
+    //   console.log(arguments);
+    // }
+    // foo(1, 2, 3, 4, 5);
+    // var x = 1;
+    // y = z = 0;
+
+    // function add(n) {
+    //   return n = n + 1;
+    // }
+
+    // y = add(x);
+
+    // function add(n) {
+    //   return n = n + 3;
+    // }
+
+    // z = add(x);
+    // console.log(x)
+    // console.log(y)
+    // console.log(z)
+    //预编译的时候函数声明提升，后面的add函数覆盖前面的add函数
+  </script>
+</body>
+
+</html>

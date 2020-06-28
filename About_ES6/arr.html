@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var str = 'alibaba';
+    var str1 = 'baidu';
+    var str2 = 'tencent';
+    var str3 = 'toutiao';
+    var str4 = 'wangyi';
+    var str5 = 'xiaowang';
+    var str6 = 'nv';
+
+    var strFinal = '';
+    // 第一种方法： var arr = [str1, str2, str3.str4.str5];
+    // for (var i = 0; i < arr.length; i++) {
+    //   strFinal += arr[i]
+    // }
+      
+
+
+
+
+    // var arr = [1,2,3,4,5,6];
+    // var arr1 = [7,8,9]
+    // var str = arr.join('-')
+    //slice(从该位开始截取，截取到该位)
+    // var newArr = arr.slice(1,3)
+    // var newArr = arr.slice(1)
+
+
+    //【封装返回字节长度的方法
+    // function retBytes(str) {
+    //   var num = str.length;
+    //   for (var i = 0; i < num; i++) {
+    //     if (str.charCodeAt(i) > 255) {
+    //       num++;
+    //     }
+    //   }
+
+    //   return num;
+    // }
+    // var arr = ['ab赵', 'b陶cd', '小cccc', '陶dddd', '鋆asgdasdhafgf', 'aasgf', 'ageferedcas'];
+    // arr.sort(function (a, b) {
+    //   return retBytes(a) - retBytes(b)
+    // })】
+
+
+    //【把对象按照年龄排序
+    // var cheng = {
+    //   name: 'cheng',
+    //   age: 18,
+    //   sex: 'male',
+    //   face: 'handsome'
+    // }
+
+    // var deng = {
+    //   name: "deng",
+    //   age: 40,
+    //   sex: 'undefined',
+    //   face: 'amazing'
+    // }
+
+    // var zhang = {
+    //   name: 'zhang',
+    //   age: 20,
+    //   sex: 'male'
+    // }
+
+    // var arr = [cheng, deng, zhang];
+    // arr.sort(function (a, b) {
+    //   return b.age - a.age;
+    // })】
+
+    //【把一个有序的数组乱序
+    // var arr = [1, 2, 3, 4, 5, 6, 7];
+    // arr.sort(function () {
+    //   return Math.random() - 0.5;
+    // })】
+
+
+    //【数组排序
+    // var arr = [2, 10, 20, 13, 4, 18, 9];
+    // 1.必须写两个形参
+    //2.看返回值  1）当返回值为负数，那么前面的数放在前面
+    //           2)为正数，那么后面的数在前
+    //           3）为0，不动
+    // arr.sort(function (a, b) {
+    // if (a - b > 0) {
+    //   return a - b;
+    // } else {
+    //   return a - b;
+    // }
+
+    // return a - b; //升序
+    // return b - a; //降序
+    // })】
+
+
+
+    // 【var arr = [1,2,3,4,5];
+    // var arr = new Array(1,2,3,4,5);
+    // var arr = new Array(10);
+    // var arr1 = []
+
+
+    //模拟push方法
+    // var arr = [1,2,3];
+    // Array.prototype.push = function() {
+    //   for(var i = 0; i < arguments.length; i++) {
+    //     this[this.length] = arguments[i]
+    //   }
+
+    //   return this.length;
+    // }】
+  </script>
+</body>
+
+</html>

@@ -17,7 +17,7 @@ export default {
     SwipeItem,
   },
 };
-</script>he
+</script>
 <style lang="scss" scoped>
 .my-swipe {
   height: 200px;
