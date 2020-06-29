@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const list = ["100000", "z", "22222", "r", "t"];
+      const finalList = list.sort((a, b) => sortLikeWin(a, b));
+      // 最终结果为 ['》', '1', 'r', 't', '你', '我']
+      console.log(finalList);
+
+      function sortLikeWin(name1, name2) {
+        const regexNum = /[0-9]/;
+        const regexEng = /[A-Za-z]/;
+        // 排序大小： 特殊字符 > 数字 > 字母 > 汉字
+        // 如果第一个字符相等，再比较下一个字符
+        let compareValue = false;
+        const minLength = Math.min(name1.length, name2.length);
+
+        for (let i = 0; i < minLength; i++) {
+          const aIndex = name1.charAt(i);
+          const bIndex = name2.charAt(i);
+          const nameFirstType = [aIndex, bIndex].map((item) => {
+            return regexNum.test(item) ? 1 : 2;
+          });
+
+          if(nameFirstType[0] !== nameFirstType[1] && nameFirstType[0] === 1) {
+            compareValue = true;
+          }
+
+          if (aIndex !== bIndex && nameFirstType[0] !== nameFirstType[1]) {
+            compareValue = nameFirstType[0] - nameFirstType[1];
+          } else {
+            compareValue = aIndex.localeCompare(bIndex, "en");
+          }
+        }
+        return compareValue;
+      }
+    </script>
+  </body>
+</html>
