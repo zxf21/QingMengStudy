@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //深克隆
+    //1.遍历对象 for(var prop in obj)
+    //2.判断是不是原始值 typeof()
+    //2.如果是引用值，判断是数组还是对象  toString()  constructor  instanceof(判断a是不是b构造出来的，判断a上面有没有b的原型)
+    //3.如果数组建立新数组，如果对象建立新对象
+    //4.看把数组或者对象里面的值重新拷贝
+    //5.递归
+
+    var obj = {
+      name: 'abc',
+      age: 123,
+      card: ['visa', "master"],
+      wife: {
+        name: 'bcd',
+        son: {
+          name: 'aaa'
+        }
+      }
+    }
+
+    var obj1 = {}
+
+    function deepClone(origin, target) {
+      var target = target || {};
+      toStr = Object.prototype.toString;
+      arStr = "[Object Array]";
+
+      for (var prop in origin) {
+        if (origin.hasOwnProperty(prop)) {
+          if (origin[prop] !== 'null' && typeof (origin[prop]) == 'object') {
+
+            if (toStr.call(origin[prop]) == arStr) {
+              target[prop] = [];
+            } else {
+              target[prop] = {};
+            }
+            deepClone(origin[prop], target[prop]);
+          } else {
+            target[prop] = origin[prop]
+          }
+        }
+      }
+      return target;
+    }
+
+
+    //浅克隆   原始值值拷贝, 引用值拷贝的时候其中一个改另一个就发生变化
+    // var obj = {
+    //   name: 'abc',
+    //   age: 123,
+    //   sex: 'female',
+    //   card: ['visa', 'master']
+    // }
+
+    // var obj1 = {};
+
+    // function clone(origin, target) {
+    //   var target = target || {};
+    //   for (var prop in origin) {
+    //     target[prop] = origin[prop]
+    //   }
+
+    //   return target;
+    // }
+
+    // clone(obj, obj1)
+
+
+
+    //笔试题
+    // var bar = {a: '002'};
+    // function print() {
+    //   bar.a = 'a';
+    //   Object.prototype.b = 'b';
+    //   return function inner() {
+    //     console.log(bar.a);
+    //     console.log(bar.b);
+    //   }
+    // }
+
+    // print()();//第一个括号返回一个函数，第二个函数执行
+  </script>
+</body>
+
+</html>
